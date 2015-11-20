@@ -47,7 +47,7 @@ public class PersoanaController {
     for(Persoana p : this.persoane) {
       if(p.getId() == id) {
         this.persoane.remove(p);
-        return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.OK);
       }
     }
     return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);

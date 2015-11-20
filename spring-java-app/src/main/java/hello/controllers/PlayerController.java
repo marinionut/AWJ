@@ -17,9 +17,9 @@ public class PlayerController {
     private List<Player> players = new ArrayList<Player>();
 
     PlayerController() {
-        Player p1 = new Player(0, "Hagi");
-        Player p2 = new Player(1, "Dobrin");
-        Player p3 = new Player(2, "Popescu");
+        Player p1 = new Player(0, "Hagi", 24);
+        Player p2 = new Player(1, "Dobrin", 35);
+        Player p3 = new Player(2, "Popescu", 26);
 
         players.add(p1);
         players.add(p2);
@@ -50,18 +50,21 @@ public class PlayerController {
     }
 
     @RequestMapping(value = "/player", method = RequestMethod.POST)
-    public ResponseEntity create(@RequestParam(value = "name", defaultValue = "Ronaldinho") String name) {
-        Player p = new Player(players.size(), name);
+    public ResponseEntity create(@RequestParam(value = "name", defaultValue = "Ronaldinho") String name,
+                                 @RequestParam(value = "age", defaultValue = "24") int age) {
+        Player p = new Player(players.size(), name, age);
         players.add(p);
         return new ResponseEntity<Player>(p, new HttpHeaders(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/player/{id}", method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") int id,
-                                 @RequestParam(value = "name") String name) {
+                                 @RequestParam(value = "name") String name,
+                                 @RequestParam(value = "age") int age) {
         for(Player p : this.players) {
             if(p.getId() == id) {
                 p.setName(name);
+                p.setAge(age);
                 return new ResponseEntity<Player>(p, new HttpHeaders(), HttpStatus.OK);
             }
         }

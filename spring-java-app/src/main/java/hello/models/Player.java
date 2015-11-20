@@ -6,10 +6,12 @@ package hello.models;
 public class Player {
     private long id;
     private String name;
+    private int age;
 
-    public Player(long id, String name) {
+    public Player(long id, String name, int age) {
         this.id = id;
         this.name = name;
+        this.age = age;
     }
 
     public long getId() {
@@ -26,5 +28,13 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
