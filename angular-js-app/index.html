@@ -1,16 +1,757 @@
 <!DOCTYPE html>
 <html ng-app="blog">
 <head>
-  <title>My application</title>
+  <title>Proiect AWJ</title>
   <link rel="stylesheet" media="all" href="css/bootstrap.min.css">
   <link rel="stylesheet" media="all" href="css/custom.css">
 </head>
 <body>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">AWJ Base Project</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#authorId">Author</a></li>
+            <li><a href="#bookId">Book</a></li>
+            <li><a href="#teamId">Team</a></li>
+            <li><a href="#playerId">Player</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <hr/>
 
   <div class="container">
     <div ng-controller="HomeController">
       <h1>{{ helloWorld }}</h1>
+      <p>Beta Version</p>
     </div>
+  </div>
+
+  <hr/>
+
+  <!-- /author -->
+  <div class="container" id="authorId">
+    <h1>Author</h1>
+    <h2>List all authors</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Nationalitate</th>
+        <th>Curent literar</th>
+        <th style="width:210px;">Options</th>
+      </tr>
+      <tr>
+        <td>Creanga</td>
+        <td>Ion</td>
+        <td>Romana</td>
+        <td>Realist</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Eminescu</td>
+        <td>Mihai</td>
+        <td>Romana</td>
+        <td>Romantism</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Preda</td>
+        <td>Marin</td>
+        <td>Romana</td>
+        <td>Modernism</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Eliade</td>
+        <td>Mircea</td>
+        <td>Romana</td>
+        <td>Modernism</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Edit an author</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Nume</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Prenume</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Prenume">
+          </div>
+          <div class="form-group">
+            <label for="attribute3">Nationalitate</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Nationalitate">
+          </div>
+          <div class="form-group">
+            <label for="attribute4">Curent literar</label>
+            <input type="text" class="form-control" id="attribute4" placeholder="Curent literar">
+          </div>
+          <button type="submit" class="btn btn-info">Save</button>
+        </form>
+      </div>
+
+
+      <div class="col-md-3 col-md-offset-6">
+        <h2>Add an author</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Nume</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Prenume</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Prenume">
+          </div>
+          <div class="form-group">
+            <label for="attribute3">Nationalitate</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Nationalitate">
+          </div>
+          <div class="form-group">
+            <label for="attribute4">Curent literar</label>
+            <input type="text" class="form-control" id="attribute4" placeholder="Curent literar">
+          </div>
+          <button type="submit" class="btn btn-success">Add</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Show an author</h2>
+      </div>
+      <div class="col-md-2">
+        <img src="http://lorempixel.com/200/200/technics/?id=1" class="img-thumbnail"/>
+      </div>
+      <div class="col-md-10">
+        <h1>Creanga Ion</h1>
+        <p>Romana, Realism</p>
+        <h3>Sub resource</h3>
+        <table class="table table-bordered table-striped">
+          <tr>
+            <th>Books</th>
+          </tr>
+          <tr>
+            <td>Titlu</td>
+          </tr>
+          <tr>
+            <td>Editura</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <!-- /books-->
+  <div class="container" id="bookId">
+    <h1>Book</h1>
+    <h2>List all books</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th>Titlu</th>
+        <th>Editura</th>
+        <th>Autor</th>
+        <th style="width:210px;">Options</th>
+      </tr>
+      <tr>
+        <td>Amintiri din copilarie</td>
+        <td>Humanis</td>
+        <td>Ion Creanga</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Volum de poezii</td>
+        <td>Teora</td>
+        <td>Mihai Eminescu</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Fratii Jderi</td>
+        <td>Humanis</td>
+        <td>Mihail Sadoveanu</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Maitreyi</td>
+        <td>Romana</td>
+        <td>Mircea Eliade</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Edit a book</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Titlu </label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Titlu">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Editura</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Editura">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Autor</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Autor">
+          </div>
+          <button type="submit" class="btn btn-info">Save</button>
+        </form>
+      </div>
+
+
+      <div class="col-md-3 col-md-offset-6">
+        <h2>Add a book</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Titlu</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Titlu">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Editura</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Editura">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Autor</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Autor">
+          </div>
+          <button type="submit" class="btn btn-success">Add</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Show a book</h2>
+      </div>
+      <div class="col-md-2">
+        <img src="http://lorempixel.com/200/200/technics/?id=2" class="img-thumbnail"/>
+      </div>
+      <div class="col-md-10">
+        <h1>Amintiri din copilarie</h1>
+        <p>Ion Creanga, Humanitas</p>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+    
+  <!-- /Team-->
+  <div class="container" id="teamId">
+    <h1>Team</h1>
+    <h2>List all teams</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th>Nume</th>
+        <th>Liga</th>
+        <th style="width:210px;">Options</th>
+      </tr>
+      <tr>
+        <td>Real Madrid</td>
+        <td>Primera Division</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Barcelona</td>
+        <td>Primera Division</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Bayern Munchen</td>
+        <td>Bundesliga</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Chelsea</td>
+        <td>Premier League</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Edit a team</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Nume</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Liga</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Liga">
+          </div>
+          <button type="submit" class="btn btn-info">Save</button>
+        </form>
+      </div>
+
+
+      <div class="col-md-3 col-md-offset-6">
+        <h2>Add a team</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Nume</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Liga</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Liga">
+          </div>
+          <button type="submit" class="btn btn-success">Add</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Show a team</h2>
+      </div>
+      <div class="col-md-2">
+        <img src="http://lorempixel.com/200/200/technics/?id=2" class="img-thumbnail"/>
+      </div>
+      <div class="col-md-10">
+        <h1>Real Madrid</h1>
+        <p>Primera Division</p>
+        <h3>Sub resource</h3>
+        <table class="table table-bordered table-striped">
+          <tr>
+            <th>Gareth Bale</th>
+          </tr>
+          <tr>
+            <td>Cristiano Ronaldo</td>
+          </tr>
+          <tr>
+            <td>Sergio Ramos</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+    
+  <!-- /players-->
+  <div class="container" id="playerId">
+    <h1>Player</h1>
+    <h2>List all players</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th>Nume</th>
+        <th>Varsta</th>
+        <th>Echipa</th>
+        <th style="width:210px;">Options</th>
+      </tr>
+      <tr>
+        <td>Cristiano Ronaldo</td>
+        <td>29</td>
+        <td>Real Madrid</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Lionel Messi</td>
+        <td>27</td>
+        <td>Barcelona</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Gareth Bale</td>
+        <td>26</td>
+        <td>Real Madrid</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Mario Goetze</td>
+        <td>25</td>
+        <td>Bayern Munchen</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Edit a player</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Nume</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Varsta </label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Varsta">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Echipa </label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Echipa">
+          </div>
+          <button type="submit" class="btn btn-info">Save</button>
+        </form>
+      </div>
+
+
+      <div class="col-md-3 col-md-offset-6">
+        <h2>Add a player</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Nume</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Varsta
+            </label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Varta">
+          </div>
+        <div class="form-group">
+            <label for="attribute2">Echipa </label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Echipa">
+          </div>
+          <button type="submit" class="btn btn-success">Add</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Show a player</h2>
+      </div>
+      <div class="col-md-2">
+        <img src="http://lorempixel.com/200/200/technics/?id=2" class="img-thumbnail"/>
+      </div>
+      <div class="col-md-10">
+        <h1>Cristiano Ronaldo</h1>
+        <p>29, Real Madrid</p>
+      </div>
+    </div>
+  </div>
+ 
+ <hr/>
+    
+  <div class="container">
+    <footer class="footer">
+      <p class="text-muted pull-left">AWJ Base Project &copy; 2015-2016</p>
+      <p class="text-muted pull-right">Marin Ionut 332AA</p>
+    </footer>
   </div>
 
   <script src="js/jquery-1.11.3.min.js"></script>
