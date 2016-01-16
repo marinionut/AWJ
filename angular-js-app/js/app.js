@@ -225,10 +225,12 @@ app.controller('TeamController', ['$scope', '$http', function($scope, $http) {
 
   $scope.teams = [];
   $scope.keys = [];
+  $scope.keysPlayer = [];
 
   $scope.team = {};
   $scope.editTeam = {};
   $scope.readTeam = {};
+  $scope.teamPlayers = [];
   $scope.isVisible = false;
 
 
@@ -253,6 +255,11 @@ app.controller('TeamController', ['$scope', '$http', function($scope, $http) {
   };
 
   $scope.setReadTeam = function(team) {
+    $http.get('http://localhost:8080/team/player/'+ team.id).then(
+     function successCallback(response) {
+     $scope.teamPlayers = response;
+     $scope.keys = Object.keys(response.data[0]);
+    });
     $scope.readTeam = team;
     $scope.isVisible = true;
   }

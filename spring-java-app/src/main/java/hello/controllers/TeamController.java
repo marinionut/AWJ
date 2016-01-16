@@ -49,7 +49,7 @@ public class TeamController {
         players.add(p9);
 
         for(Player p : players) {
-            teams.get(new Random().nextInt(2)).getTeamPlayers().add(p);
+            teams.get(new Random().nextInt(3)).getTeamPlayers().add(p);
         }
     }
     @RequestMapping(value = "/team", method = RequestMethod.GET)
@@ -64,6 +64,26 @@ public class TeamController {
         }
         return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
     }
+
+    @RequestMapping(value="/team/player/{id}", method = RequestMethod.GET)
+    public List<Player> showPlayers(@PathVariable("id") int id) {
+        for(Team team : this.teams) {
+            if(team.getId() == id) {
+                return team.getTeamPlayers();
+            }
+        }
+        return new ArrayList<Player>();
+    }
+
+//    @RequestMapping(value="/team/player/{id}", method = RequestMethod.GET)
+//    public ResponseEntity showPlayers(@PathVariable("id") int id) {
+//        for(Team team : this.teams) {
+//            if(team.getId() == id) {
+//                return new ResponseEntity<List<Player>>(team.getTeamPlayers(), new HttpHeaders(), HttpStatus.FOUND);
+//            }
+//        }
+//        return new ResponseEntity<String>("Error", new HttpHeaders(), HttpStatus.NOT_FOUND);
+//    }
 
     @RequestMapping(value = "/team/{id}", method = RequestMethod.DELETE)
     public ResponseEntity remove(@PathVariable("id") int id) {
