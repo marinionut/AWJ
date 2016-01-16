@@ -4,24 +4,38 @@ package hello.models;
  * Created by ionut on 18.11.2015.
  */
 public class Author {
-    private String name;
     private int id;
+    private String nume;
+    private String prenume;
 
-
-    public Author(int id, String name) {
-        this.name = name;
+    public Author() {}
+    public Author(int id, String nume, String prenume) {
         this.id = id;
-    }
-
-    public String getName() {
-        return this.name;
+        this.nume = nume;
+        this.prenume = prenume;
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNume() {
+        return nume;
+    }
+
+    public void setNume(String nume) {
+        this.nume = nume;
+    }
+
+    public String getPrenume() {
+        return prenume;
+    }
+
+    public void setPrenume(String prenume) {
+        this.prenume = prenume;
     }
 }

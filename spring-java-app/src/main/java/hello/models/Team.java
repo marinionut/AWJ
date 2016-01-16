@@ -1,5 +1,6 @@
 package hello.models;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,13 +10,24 @@ import java.util.List;
 public class Team {
     private long id;
     private String name;
-    private String founderName;
-    private int league;
+    private String league;
+    private List<Player> teamPlayers;
 
-    public Team(long id, String name, String founderName, int league) {
+    public Team() {
+
+    }
+
+    public Team(long id, String name, String league) {
         this.id = id;
         this.league = league;
-        this.founderName = founderName;
+        this.name = name;
+        teamPlayers = new ArrayList<>();
+    }
+
+    public Team(long id, String league, String name, List<Player> teamPlayers) {
+        this.id = id;
+        this.teamPlayers = teamPlayers;
+        this.league = league;
         this.name = name;
     }
 
@@ -27,12 +39,12 @@ public class Team {
         this.id = id;
     }
 
-    public String getFounderName() {
-        return founderName;
+    public String getLeague() {
+        return league;
     }
 
-    public void setFounderName(String founderName) {
-        this.founderName = founderName;
+    public void setLeague(String league) {
+        this.league = league;
     }
 
     public String getName() {
@@ -43,11 +55,11 @@ public class Team {
         this.name = name;
     }
 
-    public int getLeague() {
-        return league;
+    public List<Player> getTeamPlayers() {
+        return teamPlayers;
     }
 
-    public void setLeague(int league) {
-        this.league = league;
+    public void setTeamPlayers(List<Player> teamPlayers) {
+        this.teamPlayers = teamPlayers;
     }
 }

@@ -1,11 +1,7 @@
 package hello.controllers;
 
 import hello.models.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +16,9 @@ public class AuthorController {
     private List<Author> authors = new ArrayList<Author>();
 
     AuthorController() {
-        Author a1 = new Author(0, "Creanga");
-        Author a2 = new Author(1, "Eminescu");
-        Author a3 = new Author(2, "Sadoveanu");
+        Author a1 = new Author(0, "Creanga", "Ion" );
+        Author a2 = new Author(1, "Eminescu", "Mihai" );
+        Author a3 = new Author(2, "Sadoveanu", "Mihail");
 
         authors.add(a1);
         authors.add(a2);
@@ -56,18 +52,29 @@ public class AuthorController {
     }
 
     @RequestMapping(value="/author", method = RequestMethod.POST)
-    public ResponseEntity create(@RequestParam(value="name", defaultValue="Bacovia") String name) {
-        Author a = new Author(authors.size(), name);
-        authors.add(a);
-        return new ResponseEntity<Author>(a, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity create(@RequestBody Author author)
+                                /*(@RequestParam(value="nume", defaultValue="Bacovia") String nume,
+                                 @RequestParam(value="prenume", defaultValue="George") String prenume)
+                                */{
+        for(Author a: authors) {
+           if(a.getNume().equals(author.getNume()) && author.getPrenume().equals(a.getPrenume()))
+               return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.FOUND);
+        }
+        authors.add(author);
+        return new ResponseEntity<Author>(author, new HttpHeaders(), HttpStatus.OK);
     }
 
     @RequestMapping(value="/author/{id}", method = RequestMethod.PUT)
-    public ResponseEntity update(@PathVariable("id") int id,
-                                 @RequestParam(value="name", defaultValue="Bacovia") String name) {
+    public ResponseEntity update(@RequestBody Author author)
+                                /*
+                                 @PathVariable("id") int id,
+                                 @RequestParam(value="name", defaultValue="Bacovia") String nume,
+                                 @RequestParam(value="prenume", defaultValue="George") String prenume
+                                 */ {
         for(Author a: this.authors) {
-            if(a.getId() == id ){
-                a.setName(name);
+            if(a.getId() == author.getId() ){
+                a.setNume(author.getNume());
+                a.setPrenume(author.getPrenume());
                 return new ResponseEntity<Author>(a, new HttpHeaders(), HttpStatus.OK);
             }
         }

@@ -42,23 +42,19 @@
 
   <hr/>
 
-  <!-- /author -->
-  <div class="container" id="authorId">
-    <h1>Author</h1>
-    <h2>List all authors</h2>
+  <!-- /Persoana -->
+  <!-- /resources1 -->
+  <div ng-controller="HomeController" class="container">
+    <h1>Resource 1</h1>
+    <h2>List all resources</h2>
     <table class="table table-bordered">
       <tr>
-        <th>Nume</th>
-        <th>Prenume</th>
-        <th>Nationalitate</th>
-        <th>Curent literar</th>
+        <th ng-repeat="key in keys">{{ key }}</th>
         <th style="width:210px;">Options</th>
       </tr>
-      <tr>
-        <td>Creanga</td>
-        <td>Ion</td>
-        <td>Romana</td>
-        <td>Realist</td>
+      <tr ng-repeat="item in persoane.data" data-id="{{ item.id }}">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
         <td>
           <a href="">
             <span class="label label-success">
@@ -66,171 +62,155 @@
               <span class="glyphicon glyphicon-folder-open"></span>
             </span>
           </a>
-          <a href="">
-            <span class="label label-primary">
+          <button ng-click="setUpdatePerson(item)" class="btn btn-info btn-xs">
               Edit
               <span class="glyphicon glyphicon-edit"></span>
-            </span>
           </a>
-          <a href="">
-            <span class="label label-danger">
+          <button ng-click="deletePersoana(item.id)" class="btn btn-danger btn-xs">
               Remove
               <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Eminescu</td>
-        <td>Mihai</td>
-        <td>Romana</td>
-        <td>Romantism</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Preda</td>
-        <td>Marin</td>
-        <td>Romana</td>
-        <td>Modernism</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Eliade</td>
-        <td>Mircea</td>
-        <td>Romana</td>
-        <td>Modernism</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
+            </button>
           </a>
         </td>
       </tr>
     </table>
 
+    <h2>Add new person</h2>
+    <table>
+      <tr>
+        <td>ID</td>
+        <td><input type="text" class="form-control" ng-model="person.id"/></td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td><input type="text" class="form-control" ng-model="person.name"/></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button ng-click="addPersoana(person)" class="btn btn-primary btn-xs">Add</button>
+        </td>
+      </tr>
+    </table>
+
+
+    <h2>Edit a person</h2>
+    <table>
+      <tr>
+        <td>ID</td>
+        <td><input type="text" ng-model="editPerson.id"></td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td><input type="text" ng-model="editPerson.name"></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="btn btn-info btn-xs" ng-click="updatePerson()">
+            Update
+          </button>
+        </td>
+      </tr>
+    </table>
+ope
+  <!-- /author -->
+  <div class="container" id="authorId" ng-controller = "AutorController">
+    <h1>Author</h1>
+    <h2>List all authors</h2>
+    <table class="table table-bordered">
+      <tr>
+          <th ng-repeat = "key in keys">{{ key }}</th>
+          <th style="width:210px;">Options</th>
+      </tr>
+      <tr ng-repeat="item in autori.data" data-id="{{ item.id }}">
+          <td>{{ item.id }}</td>
+          <td>{{ item.nume}}</td>
+          <td>{{ item.prenume}}</td>
+          <td>
+            <a href="">
+              <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myAuthorModal" ng-click = "setReadAutor(item)">
+                Open
+                <span class="glyphicon glyphicon-folder-open"></span>
+              </span>
+            </a>
+            <button ng-click="setUpdateAutor(item)" class="btn btn-info btn-xs">
+                Edit
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+            <button ng-click="deleteAutor(item.id)" class="btn btn-danger btn-xs">
+                Remove
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </a>
+          </td>
+      <tr>
+    </table>
+
+    <!--modal-->
+    <div class="modal fade" id="myAuthorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Author</h4>
+          </div>
+          <div class="modal-body">
+           <div class="form-group">
+              <label for="attribute1">Id</label>
+              <input type="text" class="form-control" ng-value="readAutor.id" ng-readonly="true">
+            </div>
+            <div class="form-group">
+              <label for="attribute2">Nume</label>
+              <input type="text" class="form-control"  ng-readonly="true" ng-value="readAutor.nume">
+            </div>
+            <div class="form-group">
+              <label for="attribute3">Prenume</label>
+              <input type="text" class="form-control" ng-value="readAutor.prenume" ng-readonly="true"> 
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="row">
       <div class="col-md-3">
         <h2>Edit an author</h2>
-        <form action="" method="">
+        <form >
           <div class="form-group">
-            <label for="attribute1">Nume</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" ng-model="editAutor.id" ng-readonly="true">
           </div>
           <div class="form-group">
-            <label for="attribute2">Prenume</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Prenume">
+            <label for="attribute2">Nume</label>
+            <input type="text" class="form-control" ng-model="editAutor.nume">
           </div>
           <div class="form-group">
-            <label for="attribute3">Nationalitate</label>
-            <input type="text" class="form-control" id="attribute3" placeholder="Nationalitate">
+            <label for="attribute3">Prenume</label>
+            <input type="text" class="form-control" ng-model="editAutor.prenume">
           </div>
-          <div class="form-group">
-            <label for="attribute4">Curent literar</label>
-            <input type="text" class="form-control" id="attribute4" placeholder="Curent literar">
-          </div>
-          <button type="submit" class="btn btn-info">Save</button>
+          <button type="submit" class="btn btn-info" ng-click="updateAutor()">Save</button>
         </form>
       </div>
-
 
       <div class="col-md-3 col-md-offset-6">
         <h2>Add an author</h2>
-        <form action="" method="">
+        <form>
           <div class="form-group">
-            <label for="attribute1">Nume</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Id" ng-model="autor.id">
           </div>
           <div class="form-group">
-            <label for="attribute2">Prenume</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Prenume">
+            <label for="attribute2">Nume</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume" ng-model="autor.nume">
           </div>
           <div class="form-group">
-            <label for="attribute3">Nationalitate</label>
-            <input type="text" class="form-control" id="attribute3" placeholder="Nationalitate">
+            <label for="attribute3">Prenume</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Prenume" ng-model="autor.prenume">
           </div>
-          <div class="form-group">
-            <label for="attribute4">Curent literar</label>
-            <input type="text" class="form-control" id="attribute4" placeholder="Curent literar">
-          </div>
-          <button type="submit" class="btn btn-success">Add</button>
+          <button ng-click="addAutor(autor)" class="btn btn-success">Add</button>
         </form>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Show an author</h2>
-      </div>
-      <div class="col-md-2">
-        <img src="http://lorempixel.com/200/200/technics/?id=1" class="img-thumbnail"/>
-      </div>
-      <div class="col-md-10">
-        <h1>Creanga Ion</h1>
-        <p>Romana, Realism</p>
-        <h3>Sub resource</h3>
-        <table class="table table-bordered table-striped">
-          <tr>
-            <th>Books</th>
-          </tr>
-          <tr>
-            <td>Titlu</td>
-          </tr>
-          <tr>
-            <td>Editura</td>
-          </tr>
-        </table>
       </div>
     </div>
   </div>
@@ -238,514 +218,320 @@
   <hr/>
 
   <!-- /books-->
-  <div class="container" id="bookId">
+  <div class="container" id="bookId" ng-controller = "BookController">
     <h1>Book</h1>
     <h2>List all books</h2>
     <table class="table table-bordered">
       <tr>
-        <th>Titlu</th>
-        <th>Editura</th>
-        <th>Autor</th>
-        <th style="width:210px;">Options</th>
+          <th ng-repeat = "key in keys">{{ key }}</th>
+          <th style="width:210px;">Options</th>
       </tr>
+     <tr ng-repeat="item in books.data" data-id="{{ item.id }}">
+          <td>{{ item.id }}</td>
+          <td>{{ item.titlu}}</td>
+          <td>{{ item.editura}}</td>
+          <td>
+            <a href="">
+              <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myBookModal" ng-click = "setReadBook(item)">
+                Open
+                <span class="glyphicon glyphicon-folder-open"></span>
+              </span>
+            </a>
+            <button ng-click="setUpdateBook(item)" class="btn btn-info btn-xs">
+                Edit
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+            <button ng-click="deleteBook(item.id)" class="btn btn-danger btn-xs">
+                Remove
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </a>
+          </td>
       <tr>
-        <td>Amintiri din copilarie</td>
-        <td>Humanis</td>
-        <td>Ion Creanga</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Volum de poezii</td>
-        <td>Teora</td>
-        <td>Mihai Eminescu</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Fratii Jderi</td>
-        <td>Humanis</td>
-        <td>Mihail Sadoveanu</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Maitreyi</td>
-        <td>Romana</td>
-        <td>Mircea Eliade</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
     </table>
+
+     <!--modal-->
+    <div class="modal fade" id="myBookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Author</h4>
+          </div>
+          <div class="modal-body">
+           <div class="form-group">
+              <label for="attribute1">Id</label>
+              <input type="text" class="form-control" ng-value="readBook.id" ng-readonly="true" >
+            </div>
+            <div class="form-group">
+              <label for="attribute2">Titlu</label>
+              <input type="text" class="form-control"  ng-readonly="true" ng-value="readBook.titlu">
+            </div>
+            <div class="form-group">
+              <label for="attribute3">Editura</label>
+              <input type="text" class="form-control" ng-value="readBook.editura" ng-readonly="true"> 
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <div class="row">
       <div class="col-md-3">
         <h2>Edit a book</h2>
-        <form action="" method="">
+        <form >
           <div class="form-group">
-            <label for="attribute1">Titlu </label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Titlu">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" ng-model="editBook.id" ng-readonly="true">
           </div>
           <div class="form-group">
-            <label for="attribute2">Editura</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Editura">
+            <label for="attribute2">Nume</label>
+            <input type="text" class="form-control" ng-model="editBook.titlu">
           </div>
           <div class="form-group">
-            <label for="attribute2">Autor</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Autor">
+            <label for="attribute3">Prenume</label>
+            <input type="text" class="form-control" ng-model="editBook.editura">
           </div>
-          <button type="submit" class="btn btn-info">Save</button>
+          <button type="submit" class="btn btn-info" ng-click="updateBook()">Save</button>
         </form>
       </div>
-
 
       <div class="col-md-3 col-md-offset-6">
         <h2>Add a book</h2>
-        <form action="" method="">
+        <form>
           <div class="form-group">
-            <label for="attribute1">Titlu</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Titlu">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Id" ng-model="book.id">
           </div>
           <div class="form-group">
-            <label for="attribute2">Editura</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Editura">
+            <label for="attribute2">Titlu</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume" ng-model="book.titlu">
           </div>
           <div class="form-group">
-            <label for="attribute2">Autor</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Autor">
+            <label for="attribute3">Editura</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Prenume" ng-model="book.editura">
           </div>
-          <button type="submit" class="btn btn-success">Add</button>
+          <button ng-click="addBook(book)" class="btn btn-success">Add</button>
         </form>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Show a book</h2>
-      </div>
-      <div class="col-md-2">
-        <img src="http://lorempixel.com/200/200/technics/?id=2" class="img-thumbnail"/>
-      </div>
-      <div class="col-md-10">
-        <h1>Amintiri din copilarie</h1>
-        <p>Ion Creanga, Humanitas</p>
       </div>
     </div>
   </div>
 
   <hr/>
     
+    
+  <!-- /players-->
+ <div class="container" id="playerId" ng-controller = "PlayerController">
+    <h1>Player</h1>
+    <h2>List all players</h2>
+    <table class="table table-bordered">
+      <tr>
+          <th ng-repeat = "key in keys">{{ key }}</th>
+          <th style="width:210px;">Options</th>
+      </tr>
+      <tr ng-repeat="item in players.data" data-id="{{ item.id }}">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name}}</td>
+          <td>{{ item.age}}</td>
+          <td>
+            <a href="">
+              <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myPlayerModal" ng-click = "setReadPlayer(item)">
+                Open
+                <span class="glyphicon glyphicon-folder-open"></span>
+              </span>
+            </a>
+            <button ng-click="setUpdatePlayer(item)" class="btn btn-info btn-xs">
+                Edit
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+            <button ng-click="deletePlayer(item.id)" class="btn btn-danger btn-xs">
+                Remove
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </a>
+          </td>
+      <tr>
+    </table>
+
+    <!--modal-->
+    <div class="modal fade" id="myPlayerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Author</h4>
+          </div>
+          <div class="modal-body">
+           <div class="form-group">
+              <label for="attribute1">Id</label>
+              <input type="text" class="form-control" ng-value="readPlayer.id" ng-readonly="true">
+            </div>
+            <div class="form-group">
+              <label for="attribute2">Nume</label>
+              <input type="text" class="form-control"  ng-readonly="true" ng-value="readPlayer.name">
+            </div>
+            <div class="form-group">
+              <label for="attribute3">Varsta</label>
+              <input type="text" class="form-control" ng-value="readPlayer.age" ng-readonly="true">  
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Edit a player</h2>
+        <form >
+          <div class="form-group">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" ng-model="editPlayer.id" ng-readonly="true">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Name</label>
+            <input type="text" class="form-control" ng-model="editPlayer.name">
+          </div>
+          <div class="form-group">
+            <label for="attribute3">Age</label>
+            <type="text" class="form-control" ng-model="editPlayer.age">
+          </div>
+          <button type="submit" class="btn btn-info" ng-click="updatePlayer()">Save</button>
+        </form>
+      </div>
+
+      <div class="col-md-3 col-md-offset-6">
+        <h2>Add a player</h2>
+        <form>
+          <div class="form-group">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Id" ng-model="player.id">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">Name</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume" ng-model="player.name">
+          </div>
+          <div class="form-group">
+            <label for="attribute3">Age</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Varsta" ng-model="player.age">
+          </div>
+          <button ng-click="addPlayer(player)" class="btn btn-success">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
   <!-- /Team-->
-  <div class="container" id="teamId">
+ <div class="container" id="teamId" ng-controller = "TeamController">
     <h1>Team</h1>
     <h2>List all teams</h2>
     <table class="table table-bordered">
       <tr>
-        <th>Nume</th>
-        <th>Liga</th>
-        <th style="width:210px;">Options</th>
+          <td>Id</td>
+          <td>Name</td>
+          <td>League</td>
+          <th style="width:210px;">Options</th>
       </tr>
+     <tr ng-repeat="item in teams.data" data-id="{{ item.id }}">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name}}</td>
+          <td>{{ item.league}}</td>
+          <td>
+            <a href="">
+              <button type="button" class="btn btn-success btn-xs" ng-click = "setReadTeam(item)">
+                Open
+                <span class="glyphicon glyphicon-folder-open"></span>
+              </span>
+            </a>
+            <button ng-click="setUpdateTeam(item)" class="btn btn-info btn-xs">
+                Edit
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+            <button ng-click="deleteTeam(item.id)" class="btn btn-danger btn-xs">
+                Remove
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </a>
+          </td>
       <tr>
-        <td>Real Madrid</td>
-        <td>Primera Division</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Barcelona</td>
-        <td>Primera Division</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Bayern Munchen</td>
-        <td>Bundesliga</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Chelsea</td>
-        <td>Premier League</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
     </table>
+
 
     <div class="row">
       <div class="col-md-3">
         <h2>Edit a team</h2>
-        <form action="" method="">
+        <form >
           <div class="form-group">
-            <label for="attribute1">Nume</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" ng-model="editTeam.id" ng-readonly="true">
           </div>
           <div class="form-group">
-            <label for="attribute2">Liga</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Liga">
+            <label for="attribute2">Name</label>
+            <input type="text" class="form-control" ng-model="editTeam.name">
           </div>
-          <button type="submit" class="btn btn-info">Save</button>
+          <div class="form-group">
+            <label for="attribute3">League</label>
+            <input type="text" class="form-control" ng-model="editTeam.league">
+          </div>
+          <button type="submit" class="btn btn-info" ng-click="updateTeam()">Save</button>
         </form>
       </div>
-
 
       <div class="col-md-3 col-md-offset-6">
         <h2>Add a team</h2>
-        <form action="" method="">
+        <form>
           <div class="form-group">
-            <label for="attribute1">Nume</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
+            <label for="attribute1">Id</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Id" ng-model="team.id">
           </div>
           <div class="form-group">
-            <label for="attribute2">Liga</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Liga">
+            <label for="attribute2">Name</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Nume" ng-model="team.name">
           </div>
-          <button type="submit" class="btn btn-success">Add</button>
+          <div class="form-group">
+            <label for="attribute3">League</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Prenume" ng-model="team.league">
+          </div>
+          <button ng-click="addTeam(team)" class="btn btn-success">Add</button>
         </form>
       </div>
     </div>
+  </div>
 
-    <div class="row">
+  <div ng-show="isVisible" class="row">
       <div class="col-md-12">
-        <h2>Show a team</h2>
-      </div>
-      <div class="col-md-2">
-        <img src="http://lorempixel.com/200/200/technics/?id=2" class="img-thumbnail"/>
+        <h2>Show a Team</h2>
       </div>
       <div class="col-md-10">
-        <h1>Real Madrid</h1>
-        <p>Primera Division</p>
-        <h3>Sub resource</h3>
+        <h1>{{ readTeam.name }}</h1>
+        <p>{{ readTeam.league }}</p>
+        <h3>Players</h3>
         <table class="table table-bordered table-striped">
           <tr>
-            <th>Gareth Bale</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
           </tr>
-          <tr>
-            <td>Cristiano Ronaldo</td>
-          </tr>
-          <tr>
-            <td>Sergio Ramos</td>
+          <tr ng-repeat="item in readTeam.teamPlayers">
+            <th>{{ item.id }}</th>
+            <th>{{ item.name }}</th>
+            <th>{{ item.age }}</th>
+            <td>
           </tr>
         </table>
       </div>
     </div>
   </div>
 
+
   <hr/>
-    
-  <!-- /players-->
-  <div class="container" id="playerId">
-    <h1>Player</h1>
-    <h2>List all players</h2>
-    <table class="table table-bordered">
-      <tr>
-        <th>Nume</th>
-        <th>Varsta</th>
-        <th>Echipa</th>
-        <th style="width:210px;">Options</th>
-      </tr>
-      <tr>
-        <td>Cristiano Ronaldo</td>
-        <td>29</td>
-        <td>Real Madrid</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Lionel Messi</td>
-        <td>27</td>
-        <td>Barcelona</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Gareth Bale</td>
-        <td>26</td>
-        <td>Real Madrid</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Mario Goetze</td>
-        <td>25</td>
-        <td>Bayern Munchen</td>
-        <td>
-          <a href="">
-            <span class="label label-success">
-              Open
-              <span class="glyphicon glyphicon-folder-open"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-primary">
-              Edit
-              <span class="glyphicon glyphicon-edit"></span>
-            </span>
-          </a>
-          <a href="">
-            <span class="label label-danger">
-              Remove
-              <span class="glyphicon glyphicon-remove"></span>
-            </span>
-          </a>
-        </td>
-      </tr>
-    </table>
-
-    <div class="row">
-      <div class="col-md-3">
-        <h2>Edit a player</h2>
-        <form action="" method="">
-          <div class="form-group">
-            <label for="attribute1">Nume</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
-          </div>
-          <div class="form-group">
-            <label for="attribute2">Varsta </label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Varsta">
-          </div>
-          <div class="form-group">
-            <label for="attribute2">Echipa </label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Echipa">
-          </div>
-          <button type="submit" class="btn btn-info">Save</button>
-        </form>
-      </div>
-
-
-      <div class="col-md-3 col-md-offset-6">
-        <h2>Add a player</h2>
-        <form action="" method="">
-          <div class="form-group">
-            <label for="attribute1">Nume</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Nume">
-          </div>
-          <div class="form-group">
-            <label for="attribute2">Varsta
-            </label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Varta">
-          </div>
-        <div class="form-group">
-            <label for="attribute2">Echipa </label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Echipa">
-          </div>
-          <button type="submit" class="btn btn-success">Add</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Show a player</h2>
-      </div>
-      <div class="col-md-2">
-        <img src="http://lorempixel.com/200/200/technics/?id=2" class="img-thumbnail"/>
-      </div>
-      <div class="col-md-10">
-        <h1>Cristiano Ronaldo</h1>
-        <p>29, Real Madrid</p>
-      </div>
-    </div>
-  </div>
- 
- <hr/>
     
   <div class="container">
     <footer class="footer">
